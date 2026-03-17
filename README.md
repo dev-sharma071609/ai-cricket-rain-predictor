@@ -2,8 +2,11 @@
 
 [Live App](https://ai-cricket-rain-predictor-ysgsuwjyu9tty633lym9yb.streamlit.app/)
 
-![App Screenshot]([live app screenshot 1](url))
-
+![App Screenshot]([live app screenshot 1.png](url))
+([[live app screenshot 2.png](url)])
+([[live app screenshot 3.png](url)])
+([[live app screenshot 4.png](url)])
+([[live app screenshot 5.png](url)])
 An AI-based T20 cricket score prediction system built using ball-by-ball international cricket data.  
 The model predicts safe, expected, and aggressive score ranges and estimates revised totals when rain shortens the innings.
 ---
