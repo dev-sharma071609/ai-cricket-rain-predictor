@@ -3,7 +3,7 @@ import pandas as pd
 
 
 MODEL_PATH = "models/final_t20_model.pkl"
-model = joblib.load(MODEL_PATH)
+model = joblib.load("final_t20_model.pkl")
 
 
 def overs_to_balls(overs: float) -> int:
