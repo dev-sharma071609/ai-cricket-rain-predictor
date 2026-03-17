@@ -1,4 +1,6 @@
-# 🏏 AI Cricket Rain-Adjusted Score Predictor
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ai-cricket-rain-predictor-ysgsuwjyu9tty633lym9yb.streamlit.app/)#
+
+🏏 AI Cricket Rain-Adjusted Score Predictor
 
 [Live App](https://ai-cricket-rain-predictor-ysgsuwjyu9tty633lym9yb.streamlit.app/)
 
