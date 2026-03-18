@@ -1,7 +1,6 @@
 import os
 import sys
 
-# Force Python to import predict.py from THIS src folder
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 if CURRENT_DIR not in sys.path:
     sys.path.insert(0, CURRENT_DIR)
@@ -263,34 +262,6 @@ if st.button("Predict"):
             plt.ylabel("Score")
             plt.title("Expected Score Comparison")
             st.pyplot(fig3)
-
-            st.subheader("🔄 What-if scenario")
-            what_if_overs = st.slider(
-                "Try another reduced overs value",
-                min_value=5,
-                max_value=total_overs,
-                value=reduced_overs,
-                step=1,
-                key="what_if_slider"
-            )
-
-            if what_if_overs != reduced_overs:
-                what_if = predict_rain_range(
-                    match_format=match_format,
-                    current_score=current_score,
-                    wickets_lost=wickets_lost,
-                    overs_completed=overs_completed,
-                    balls_into_over=balls_into_over,
-                    runs_last_6=runs_last_6,
-                    wickets_last_6=wickets_last_6,
-                    runs_last_12=runs_last_12,
-                    wickets_last_12=wickets_last_12,
-                    reduced_overs=what_if_overs
-                )
-
-                w1, w2 = st.columns(2)
-                w1.metric("What-if expected score", what_if["expected"])
-                w2.metric("What-if target", what_if["expected"] + 1)
 
     except Exception as e:
         st.error(f"Error: {e}")

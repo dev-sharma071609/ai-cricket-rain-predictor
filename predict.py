@@ -31,12 +31,6 @@ def overs_balls_to_balls(overs: int, balls: int) -> int:
     return overs * 6 + balls
 
 
-def balls_to_cricket_overs(total_balls: int) -> str:
-    overs = total_balls // 6
-    balls = total_balls % 6
-    return f"{overs}.{balls}"
-
-
 def build_features(
     match_format,
     current_score,
@@ -196,10 +190,6 @@ def predict_rain_range(
 
 def simple_dls_baseline(match_format, current_score, overs_completed, balls_into_over, reduced_overs):
     match_format = match_format.upper()
-
-    if match_format not in TOTAL_OVERS:
-        raise ValueError(f"Unsupported format: {match_format}")
-
     original_total_overs = TOTAL_OVERS[match_format]
     balls_bowled = overs_balls_to_balls(overs_completed, balls_into_over)
 
@@ -223,46 +213,4 @@ if __name__ == "__main__":
     for fmt, path in MODEL_PATHS.items():
         print(fmt, "->", path, "| exists:", os.path.exists(path))
 
-    if not AVAILABLE_FORMATS:
-        print("No model files found.")
-    else:
-        test_format = AVAILABLE_FORMATS[0]
-
-        normal = predict_range(
-            match_format=test_format,
-            current_score=92,
-            wickets_lost=3,
-            overs_completed=12,
-            balls_into_over=0,
-            runs_last_6=10,
-            wickets_last_6=0,
-            runs_last_12=18,
-            wickets_last_12=1,
-            total_overs=TOTAL_OVERS[test_format],
-        )
-
-        rain = predict_rain_range(
-            match_format=test_format,
-            current_score=92,
-            wickets_lost=3,
-            overs_completed=12,
-            balls_into_over=0,
-            runs_last_6=10,
-            wickets_last_6=0,
-            runs_last_12=18,
-            wickets_last_12=1,
-            reduced_overs=16 if test_format == "T20" else 40,
-        )
-
-        baseline = simple_dls_baseline(
-            match_format=test_format,
-            current_score=92,
-            overs_completed=12,
-            balls_into_over=0,
-            reduced_overs=16 if test_format == "T20" else 40,
-        )
-
-        print("Available formats:", AVAILABLE_FORMATS)
-        print("Normal:", normal)
-        print("Rain:", rain)
-        print("DLS baseline:", baseline)
+    print("Available formats:", AVAILABLE_FORMATS)
