@@ -1,84 +1,55 @@
+# 🏏 AI Cricket Rain-Adjusted Score Predictor
 
+[![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)]()
+[![Streamlit](https://img.shields.io/badge/Streamlit-App-red?logo=streamlit)]()
+[![ML](https://img.shields.io/badge/Machine%20Learning-XGBoost-orange)]()
+[![Status](https://img.shields.io/badge/Status-Live-success)]()
 
-🏏 AI Cricket Rain-Adjusted Score Predictor
-
-
-##  Features
-
--  Predicts **safe, expected, and aggressive** final scores  
--  Handles **rain-shortened matches**  
--  Compares AI predictions with a **DLS-style baseline**  
--  Uses **real ball-by-ball international cricket data**  
--  Captures **wickets, momentum, and match context**
+🔗 **Live App:**  
+https://ai-cricket-rain-predictor-7cecgvcdwcrxxrlpztcuno.streamlit.app/
 
 ---
 
-## Model Approach
+## 📌 Overview
 
-### Dataset
-- Source: Cricsheet ball-by-ball data  
-- Matches: T20 internationals  
-- Filtered:
-  - First innings only  
-  - Removed first 2 overs (noise reduction)
+This project predicts **first-innings cricket scores** for T20 and ODI matches using machine learning.
 
-### Target
-- Predicts: **runs remaining**
-- Final score = current score + predicted runs
+It also models **rain-shortened scenarios** and compares predictions against a simplified DLS-style baseline.
 
-### Model
+---
+
+## ⚡ Features
+
+- 🎯 Predicts:
+  - Safe score
+  - Expected score
+  - Aggressive score
+- 🌧️ Rain-adjusted predictions
+- 📊 Visual score distributions
+- 🧠 Match insights (momentum, pressure, phase)
+- 📉 AI vs DLS comparison
+- 🔄 What-if simulation (change overs dynamically)
+
+---
+
+## 🧠 Model Details
+
 - Algorithm: **XGBoost Regressor**
-- Final Performance:
-  - **MAE: 16.12**
+- Data: Ball-by-ball cricket dataset
+- Separate models:
+  - T20 model
+  - ODI model
+
+### Input Features:
+- Current score
+- Wickets lost
+- Balls remaining
+- Run rate
+- Recent momentum (last 6 & 12 balls)
+- Phase indicators (death, middle, powerplay)
 
 ---
 
-## Input Features
-
-- current score  
-- wickets lost  
-- wickets in hand  
-- balls remaining  
-- overs remaining  
-- current run rate  
-- runs in last 6 balls  
-- wickets in last 6 balls  
-- runs in last 12 balls  
-- wickets in last 12 balls  
-- aggression index  
-- death overs flag  
-- middle overs flag  
-- powerplay flag  
-- required attack  
-- scoring momentum  
-
----
-
-##  Example
-
-**Input:**
-- Score: 92/3  
-- Overs: 12.0  
-- Rain reduces innings to 16 overs  
-
-**Output:**
-- Normal range: **165 / 167 / 170**  
-- Rain range: **136 / 138 / 144**  
-- Suggested target: **139**  
-- AI vs DLS baseline: **+15 runs**
-
----
-
-##  Streamlit App
-
-The project includes a web app where you can:
-
-- Enter match situation  
-- Simulate rain interruptions  
-- View score ranges  
-- Compare with DLS-style baseline  
-
----
 
 ##  Run Locally
 
